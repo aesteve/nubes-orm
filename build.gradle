@@ -1,0 +1,35 @@
+plugins {
+	id 'java'
+	id 'eclipse'
+	id 'idea'
+	id 'maven'
+}
+
+group='com.github.aesteve'
+version='0.1-SNAPSHOT'
+
+
+repositories {
+	mavenCentral()
+	mavenLocal()
+}
+
+def vertxVersion = "3.1.0"
+
+dependencies {
+
+	compile "com.github.aesteve:vertx-nubes:0.1-SNAPSHOT"
+
+	testCompile "io.vertx:vertx-unit:${vertxVersion}"
+	testCompile 'junit:junit:4.12'
+}
+
+compileTestJava {
+	options.compilerArgs << '-parameters'
+}
+
+test.outputs.upToDateWhen { false }
+
+task wrapper(type: Wrapper) {
+	gradleVersion = '2.8'
+}
