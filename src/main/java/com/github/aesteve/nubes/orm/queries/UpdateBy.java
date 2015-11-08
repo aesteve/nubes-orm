@@ -9,6 +9,6 @@ public class UpdateBy<T> {
 	public UpdateBy(T updated, String critName, Object critValue) {
 		this.updated = updated;
 		findBy = (FindBy<T>)new FindBy<>(updated.getClass());
-		findBy.addRestriction(critName, critValue);
+		findBy.eq(critName, critValue);
 	}
 }
