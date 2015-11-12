@@ -11,6 +11,7 @@ public class FindBy<T> {
 	private Class<T> clazz;
 	private Map<String, Object> strictRestrictions;
 	private Map<String, List<Object>> inRestrictions;
+	private Function<T, Object> transformation;
 
 	public FindBy(Class<T> clazz) {
 		this.clazz = clazz;
@@ -31,8 +32,12 @@ public class FindBy<T> {
 		inRestrictions.put(propertyName, possibleValues);
 	}
 
-	public <R> void in(String propertyName, List<R> possibleValues, Function<R, ?> getProperty) {
+	public <Z> void in(String propertyName, List<Z> possibleValues, Function<Z, ?> getProperty) {
 		inRestrictions.put(propertyName, possibleValues.stream().map(getProperty).collect(Collectors.toList()));
+	}
+
+	public void setTransform(Function<T, Object> transformation) {
+		this.transformation = transformation;
 	}
 
 	public Class<T> getType() {
@@ -45,6 +50,13 @@ public class FindBy<T> {
 
 	public Map<String, List<Object>> getInRestrictions() {
 		return inRestrictions;
+	}
+
+	public Object transform(T initial) {
+		if (transformation == null) {
+			return initial;
+		}
+		return transformation.apply(initial);
 	}
 
 }

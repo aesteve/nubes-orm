@@ -11,4 +11,8 @@ public class UpdateBy<T> {
 		findBy = (FindBy<T>) new FindBy<>(updated.getClass());
 		findBy.eq(critName, critValue);
 	}
+
+	public Object transform(T initial) {
+		return findBy.transform(initial);
+	}
 }
