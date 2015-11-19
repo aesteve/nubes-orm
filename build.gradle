@@ -18,7 +18,7 @@ def vertxVersion = "3.1.0"
 
 dependencies {
 
-	compile "com.github.aesteve:vertx-nubes:0.1-SNAPSHOT"
+	compile "com.github.aesteve:nubes:0.1-SNAPSHOT"
 
 	testCompile "io.vertx:vertx-unit:${vertxVersion}"
 	testCompile 'junit:junit:4.12'
@@ -31,5 +31,5 @@ compileTestJava {
 test.outputs.upToDateWhen { false }
 
 task wrapper(type: Wrapper) {
-	gradleVersion = '2.8'
+	gradleVersion = '2.9'
 }
