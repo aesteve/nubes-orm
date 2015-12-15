@@ -6,7 +6,7 @@ plugins {
 }
 
 group='com.github.aesteve'
-version='0.1-SNAPSHOT'
+version=nubesVersion
 
 
 repositories {
@@ -14,13 +14,11 @@ repositories {
 	mavenLocal()
 }
 
-def vertxVersion = "3.1.0"
-
 dependencies {
 
-	compile "com.github.aesteve:nubes:0.1-SNAPSHOT"
+	compile "com.github.aesteve:nubes:$nubesVersion"
 
-	testCompile "io.vertx:vertx-unit:${vertxVersion}"
+	testCompile "io.vertx:vertx-unit:$vertxVersion"
 	testCompile 'junit:junit:4.12'
 }
 
